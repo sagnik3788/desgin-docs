@@ -33,6 +33,7 @@ This plugin enables PipeCD to manage OpenTofu deployments, providing infrastruct
 ### `OPEN_TOFU_SYNC`
 
 Combines plan and apply in one step for quick deployments.
+
 ```
 Initializing OpenTofu...
 Planning changes...
@@ -43,6 +44,7 @@ Successfully applied changes!
 ### `OPEN_TOFU_PLAN`
 
 Shows planned changes before applying.
+
 ```
 Initializing OpenTofu...
 Planning changes...
@@ -52,6 +54,7 @@ Detected X imports, Y adds, Z changes, W destroys.
 ### `OPEN_TOFU_APPLY`
 
 Applies previously planned changes.
+
 ```
 Initializing OpenTofu...
 Applying changes...
@@ -61,6 +64,7 @@ Successfully applied changes!
 ### `OPEN_TOFU_ROLLBACK`
 
 Reverts to the previous state.
+
 ```
 Initializing OpenTofu...
 Rolling back to previous state...
@@ -81,23 +85,14 @@ Successfully rolled back changes!
 | `providers`  | array  | Provider configurations              | No       | `[]`        |
 | `vars`       | array  | Variables to pass to OpenTofu        | No       | `[]`        |
 
+### Planner Config
+
+| Field              | Type    | Description                                | Required | Default |
+|-------------------|---------|--------------------------------------------|----------|---------|
+| `autoRollback`     | boolean | Enable automatic rollback on failure       | No       | `false` |
+| `alwaysUsePipeline`| boolean | Force using pipeline sync                  | No       | `false` |
+
 ---
-### Planner ConfigAdd commentMore actions
-
-
-
-
-
-| Field | Type | Description | Required | Default |
-
-
-|-|-|-|-|-|
-
-
-| `autoRollback` | boolean | Enable automatic rollback on failure | No | `false` |
-
-
-| `alwaysUsePipeline` | boolean | Force using pipeline sync | No | `false` |
 
 ## Application Configuration
 
@@ -107,19 +102,19 @@ Successfully rolled back changes!
 
 | Field             | Type    | Description                        | Required | Default |
 |------------------|---------|------------------------------------|----------|---------|
-| `exitOnNoChanges`| boolean | Exit stage if no changes detected | No       | `false` |
+| `exitOnNoChanges`| boolean | Exit stage if no changes detected  | No       | `false` |
 
 #### `OPEN_TOFU_APPLY` Stage
 
-| Field     | Type    | Description                      | Required | Default |
-|-----------|---------|----------------------------------|----------|---------|
-| `retries` | integer | How many times to retry applying changes | No | `0` |
+| Field     | Type    | Description                             | Required | Default |
+|-----------|---------|-----------------------------------------|----------|---------|
+| `retries` | integer | How many times to retry applying changes| No       | `0`     |
 
 #### `OPEN_TOFU_SYNC` Stage
 
-| Field     | Type    | Description                      | Required | Default |
-|-----------|---------|----------------------------------|----------|---------|
-| `retries` | integer | How many times to retry applying changes | No | `0` |
+| Field     | Type    | Description                             | Required | Default |
+|-----------|---------|-----------------------------------------|----------|---------|
+| `retries` | integer | How many times to retry applying changes| No       | `0`     |
 
 ---
 
