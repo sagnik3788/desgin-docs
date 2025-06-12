@@ -86,7 +86,6 @@ Successfully rolled back changes!
 
 ---
 
-
 ## Application Configuration
 
 ### Stage Options
@@ -96,17 +95,15 @@ Successfully rolled back changes!
 | Field | Type | Description | Required | Default |
 |-|-|-|-|-|
 | `exitOnNoChanges` | boolean | Exit stage if no changes detected | No | `false` |
-| `timeout` | string | Stage timeout | No | `"10m"` |
 
 #### `OPEN_TOFU_APPLY` Stage
 
 | Field | Type | Description | Required | Default |
 |-|-|-|-|-|
-| `requiresApproval` | boolean | Require manual approval | No | `true` |
-| `timeout` | string | Stage timeout | No | `"15m"` |
+| `retries` | integer | How many times to retry applying changes | No | `0` |
 
-#### `OPEN_TOFU_ROLLBACK` Stage
+#### `OPEN_TOFU_SYNC` Stage
 
 | Field | Type | Description | Required | Default |
 |-|-|-|-|-|
-| `timeout` | string | Stage timeout | No | `"10m"` |
+| `retries` | integer | How many times to retry applying changes | No | `0` |
