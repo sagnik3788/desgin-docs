@@ -27,24 +27,18 @@
 This plugin enables PipeCD to manage OpenTofu deployments, providing infrastructure-as-code capabilities with support for planning, applying, and managing OpenTofu configurations.
 
 ---
-
 ## Stages
 
 ### `OPEN_TOFU_SYNC`
-
-Combines plan and apply in one step for quick deployments.
-
+Executes `opentofu apply` directly to apply changes.
 ```
 Initializing OpenTofu...
-Planning changes...
 Applying changes...
 Successfully applied changes!
 ```
 
 ### `OPEN_TOFU_PLAN`
-
-Shows planned changes before applying.
-
+Executes `opentofu plan` and shows the result.
 ```
 Initializing OpenTofu...
 Planning changes...
@@ -52,9 +46,7 @@ Detected X imports, Y adds, Z changes, W destroys.
 ```
 
 ### `OPEN_TOFU_APPLY`
-
-Applies previously planned changes.
-
+Executes `opentofu apply` with the plan file.
 ```
 Initializing OpenTofu...
 Applying changes...
@@ -62,16 +54,12 @@ Successfully applied changes!
 ```
 
 ### `OPEN_TOFU_ROLLBACK`
-
-Reverts to the previous state.
-
+Executes `opentofu apply` with the previous state.
 ```
 Initializing OpenTofu...
 Rolling back to previous state...
 Successfully rolled back changes!
 ```
-
----
 
 ## Plugin Configuration
 
