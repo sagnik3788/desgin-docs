@@ -82,6 +82,22 @@ Successfully rolled back changes!
 | `vars`       | array  | Variables to pass to OpenTofu        | No       | `[]`        |
 
 ---
+### Planner ConfigAdd commentMore actions
+
+
+
+
+
+| Field | Type | Description | Required | Default |
+
+
+|-|-|-|-|-|
+
+
+| `autoRollback` | boolean | Enable automatic rollback on failure | No | `false` |
+
+
+| `alwaysUsePipeline` | boolean | Force using pipeline sync | No | `false` |
 
 ## Application Configuration
 
