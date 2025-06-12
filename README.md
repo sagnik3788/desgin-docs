@@ -85,22 +85,7 @@ Successfully rolled back changes!
 | `vars`    | array  | Variables to pass to OpenTofu        | No       | `[]`       |
 
 ---
-### Deploy Target Config
 
-| Field | Type | Description | Required | Default |
-|-|-|-|-|-|
-| `version` | string | OpenTofu version to use | Yes | "1.6.0" |
-| `workspace` | string | Workspace to use | No | "default" |
-| `backend` | object | Backend configuration | No | {} |
-| `providers` | array | Provider configurations | No | [] |
-| `vars` | array | Variables to pass to OpenTofu | No | [] |
-
-### Planner Config
-
-| Field | Type | Description | Required | Default |
-|-|-|-|-|-|
-| `autoRollback` | boolean | Enable automatic rollback on failure | No | `false` |
-| `alwaysUsePipeline` | boolean | Force using pipeline sync | No | `false` |
 
 ## Application Configuration
 
