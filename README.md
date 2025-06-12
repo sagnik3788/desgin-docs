@@ -7,7 +7,7 @@
 |---------------|-------|
 | **Stability** | In Development |
 | **Issues**    | [![Open issues](https://img.shields.io/github/issues-search/pipe-cd/community-plugins?query=is%3Aissue%20is%3Aopen%20label%3Aplugin%2Fopentofu%20&label=open&color=orange)](https://github.com/pipe-cd/community-plugins/issues?q=is%3Aopen+is%3Aissue+label%3Aplugin%2Fopentofu) |
-| **Code Owners** | [@pipe-cd/pipecd-approvers](https://github.com/orgs/pipe-cd/teams/pipecd-approvers) |
+| **Code Owners** |  |
 
 ---
 
