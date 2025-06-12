@@ -1,8 +1,4 @@
-Let me address each point and question:
 
-1. First, let me fix the design doc based on the comments:
-
-```markdown
 # OpenTofu Plugin
 
 ## Metadata
@@ -103,4 +99,3 @@ spec:
       quickSync:
         autoApprove: true
 ```
-
