@@ -70,7 +70,6 @@ Successfully rolled back changes!
 |--------------|--------|--------------------------------------|----------|-------------|
 | `version`    | string | OpenTofu version to use              | No       | From plugin |
 | `workspace`  | string | Workspace to use                     | No       | `"default"` |
-| `backend`    | object | Backend configuration                | No       | `{}`        |
 | `providers`  | array  | Provider configurations              | No       | `[]`        |
 | `vars`       | array  | Variables to pass to OpenTofu        | No       | `[]`        |
 
