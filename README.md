@@ -58,17 +58,18 @@ Rolling back to previous state...
 Successfully rolled back changes!
 ```
 
+
 ## Plugin Configuration
 
 ### Plugin Scope Config
-
 | Field        | Type   | Description                          | Required | Default     |
 |--------------|--------|--------------------------------------|----------|-------------|
 | `version`    | string | OpenTofu version to use              | Yes      | `"1.6.0"`   |
-| `workspace`  | string | Workspace to use                     | No       | `"default"` |
-| `backend`    | object | Backend configuration                | No       | `{}`        |
-| `providers`  | array  | Provider configurations              | No       | `[]`        |
-| `vars`       | array  | Variables to pass to OpenTofu        | No       | `[]`        |
+
+### Deploy Target Config
+| Field        | Type   | Description                          | Required | Default     |
+|--------------|--------|--------------------------------------|----------|-------------|
+| `workingDir` | string | Directory containing OpenTofu files  | Yes      | -           |
 
 ### Planner Config
 
