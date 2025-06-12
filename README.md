@@ -1,29 +1,26 @@
+Let me address each point and question:
 
+1. First, let me fix the design doc based on the comments:
+
+```markdown
 # OpenTofu Plugin
 
 ## Metadata
-
 | Field         | Value |
 |---------------|-------|
 | **Stability** | In Development |
 | **Issues**    | [![Open issues](https://img.shields.io/github/issues-search/pipe-cd/community-plugins?query=is%3Aissue%20is%3Aopen%20label%3Aplugin%2Fopentofu%20&label=open&color=orange)](https://github.com/pipe-cd/community-plugins/issues?q=is%3Aopen+is%3Aissue+label%3Aplugin%2Fopentofu) |
 | **Code Owners** |  |
 
----
-
 ## Supported Features
-- PipelineSync  
-- QuickSync  
-- PlanPreview  
-- DriftDetection  
-
----
+- PipelineSync
+- QuickSync
+- PlanPreview
+- DriftDetection
 
 ## Overview
-
 This plugin enables PipeCD to manage OpenTofu deployments, providing infrastructure-as-code capabilities with support for planning, applying, and managing OpenTofu configurations.
 
----
 ## Stages
 
 ### `OPEN_TOFU_SYNC`
@@ -58,7 +55,6 @@ Rolling back to previous state...
 Successfully rolled back changes!
 ```
 
-
 ## Plugin Configuration
 
 ### Plugin Scope Config
@@ -71,69 +67,40 @@ Successfully rolled back changes!
 |--------------|--------|--------------------------------------|----------|-------------|
 | `workingDir` | string | Directory containing OpenTofu files  | Yes      | -           |
 
-### Planner Config
-
-| Field              | Type    | Description                                | Required | Default |
-|-------------------|---------|--------------------------------------------|----------|---------|
-| `autoRollback`     | boolean | Enable automatic rollback on failure       | No       | `false` |
-| `alwaysUsePipeline`| boolean | Force using pipeline sync                  | No       | `false` |
-
----
-
 ## Application Configuration
 
-### Stage Options
-
-#### `OPEN_TOFU_PLAN` Stage
-
-| Field             | Type    | Description                        | Required | Default |
-|------------------|---------|------------------------------------|----------|---------|
-| `exitOnNoChanges`| boolean | Exit stage if no changes detected  | No       | `false` |
-
-#### `OPEN_TOFU_APPLY` Stage
-
-| Field     | Type    | Description                             | Required | Default |
-|-----------|---------|-----------------------------------------|----------|---------|
-| `retries` | integer | How many times to retry applying changes| No       | `0`     |
-
-#### `OPEN_TOFU_SYNC` Stage
-
-| Field     | Type    | Description                             | Required | Default |
-|-----------|---------|-----------------------------------------|----------|---------|
-| `retries` | integer | How many times to retry applying changes| No       | `0`     |
-
----
+### Application Scope Config
+| Field        | Type   | Description                          | Required | Default     |
+|--------------|--------|--------------------------------------|----------|-------------|
+| `version`    | string | OpenTofu version to use              | No       | From plugin |
+| `workspace`  | string | Workspace to use                     | No       | `"default"` |
+| `backend`    | object | Backend configuration                | No       | `{}`        |
+| `providers`  | array  | Provider configurations              | No       | `[]`        |
+| `vars`       | array  | Variables to pass to OpenTofu        | No       | `[]`        |
 
 ## Example app.pipecd.yaml
-
 ```yaml
 apiVersion: pipecd.dev/v1beta1
-kind: Piped
+kind: Application
 spec:
-  projectID: quickstart
-  pipedID: 78f97897-d9e2-40b9-8215-06908c008e58
-  pipedKeyData: Z2FrMXVzdnQ1NTdtbGFuZjc1NGdvdGsyYnkzMTE1ejVtbXR2OXg5eXZpbTVoY3NiNjU=
-  apiAddress: localhost:8080
-
-  repositories:
-    - repoId: tofu-example
-      remote: https://github.com/sagnik3788/tofu-example
-      branch: main
-
-  syncInterval: 1m
-  
+  name: aws-opentofu-app
+  git:
+    repoID: tofu-example
+    path: terraform-dev 
+    branch: main
+  kind: PLUGIN
   plugins:
-    - name: opentofu
-      url: file:///home/sangnik/.piped/plugins/opentofu
-      port: 5020
-      config:
+    opentofu:
+      input:
         version: "1.9.1"
-        credentials:
-          type: "github"
-      deployTargets:
-        - name: terraform-dev
-          type: terraform
-          config:
-            workingDir: .
+        config: "main.tf"
+        workingDir: "."  
+        env:
+          - TF_VAR_aws_region=us-east-1
+          - TF_VAR_bucket_name=tofu-example-bucket-123
+          - TF_VAR_environment=dev
+        init: true
+      quickSync:
+        autoApprove: true
 ```
 
