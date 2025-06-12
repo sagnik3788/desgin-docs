@@ -12,9 +12,6 @@
 ---
 
 ## Supported Features
-
-- Plan  
-- Apply  
 - PipelineSync  
 - QuickSync  
 - PlanPreview  
