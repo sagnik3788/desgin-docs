@@ -1,4 +1,4 @@
-# 🧹 OpenTofu Plugin
+# OpenTofu Plugin
 
 ## 📄 Metadata
 
@@ -10,7 +10,7 @@
 
 ---
 
-## ✅ Supported Features
+## Supported Features
 
 * `PipelineSync`
 * `QuickSync`
@@ -19,16 +19,16 @@
 
 ---
 
-## 📚 Overview
+## Overview
 
 The OpenTofu plugin enables **PipeCD** to manage infrastructure deployments using [OpenTofu](https://opentofu.org), a community-driven Terraform alternative.
 It supports standard OpenTofu workflows like planning, applying, rollback, and syncing infrastructure state — tightly integrated with PipeCD pipelines.
 
 ---
 
-## 🔄 Stages
+##  Stages
 
-### 🔹 `OPEN_TOFU_SYNC`
+### `OPEN_TOFU_SYNC`
 
 Applies changes directly using `opentofu apply`.
 
@@ -40,7 +40,7 @@ Successfully applied changes!
 
 ---
 
-### 🔹 `OPEN_TOFU_PLAN`
+### `OPEN_TOFU_PLAN`
 
 Runs `opentofu plan` and previews what changes would be made.
 
@@ -52,7 +52,7 @@ Detected X imports, Y adds, Z changes, W destroys.
 
 ---
 
-### 🔹 `OPEN_TOFU_APPLY`
+### `OPEN_TOFU_APPLY`
 
 Applies a previously saved plan file using `opentofu apply`.
 
@@ -76,7 +76,7 @@ Successfully rolled back changes!
 
 ---
 
-## ⚙️ Plugin Scope Configuration (`piped.yaml`)
+## Plugin Scope Configuration (`piped.yaml`)
 
 Configure defaults for **all OpenTofu applications** under `plugins.opentofu`.
 
@@ -91,7 +91,7 @@ Configure defaults for **all OpenTofu applications** under `plugins.opentofu`.
 
 ---
 
-## 📍 Deploy Target Config (`app.pipecd.yaml → deployTargets`)
+## Deploy Target Config (`app.pipecd.yaml → deployTargets`)
 
 Overrides specific settings **per environment**.
 
@@ -111,7 +111,7 @@ Inside `config`, the following fields are supported:
 
 ---
 
-## 🧲 Application Scope Config (`app.pipecd.yaml → plugins.opentofu.input`)
+##  Application Scope Config (`app.pipecd.yaml → plugins.opentofu.input`)
 
 Used for per-application configuration.
 
@@ -125,7 +125,7 @@ Used for per-application configuration.
 
 ---
 
-## 📌 Example: `app.pipecd.yaml`
+##  Example: `app.pipecd.yaml`
 
 ```yaml
 apiVersion: pipecd.dev/v1beta1
